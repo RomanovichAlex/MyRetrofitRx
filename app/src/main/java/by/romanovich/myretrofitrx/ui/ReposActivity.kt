@@ -3,6 +3,7 @@ package by.romanovich.myretrofitrx.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.romanovich.myretrofitrx.app
 
@@ -46,6 +47,19 @@ class ReposActivity : AppCompatActivity() {
             //приходят в адаптер и обновляют
             adapter.setData(it)
         }
+        /*viewModel.inProgress.observe(this){
+            if(it){
+                binding.showButton.isEnabled = false
+                binding.usernameEditText.isEnabled = false
+            }else{
+                binding.showButton.isEnabled = true
+                binding.usernameEditText.isEnabled = true
+            }
+        }*/
+        viewModel.inProgress.observe(this) { inProgress ->
+            binding.showButton.isEnabled = ! inProgress
+            binding.usernameEditText.isEnabled = ! inProgress
+            binding.progressBarLayout.isVisible =  inProgress
+        }
     }
-
 }

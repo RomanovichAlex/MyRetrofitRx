@@ -11,19 +11,26 @@ import io.reactivex.rxjava3.kotlin.subscribeBy
 class ReposViewModel(private val gitProjectRepo: ProjectsRepo) : ViewModel() {
     //что бы закидывать объекты
     private val _repos = MutableLiveData<List<GitProjectEntity>>()
-   //что бы читать объекты
+    //что бы читать объекты
     val repos: LiveData<List<GitProjectEntity>> = _repos
+
+    private val _inProgress = MutableLiveData<Boolean>()
+    val inProgress: LiveData<Boolean> =_inProgress
+
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     //отметка вьюмодели
     fun onShowRepos(username: String) {
+        _inProgress.postValue(true)
         compositeDisposable.add(
             gitProjectRepo
                 .observeReposForUser(username)
                     //подписываемся
                 .subscribeBy {
+                    _inProgress.postValue(false)
                     //берем лайв дату и передаем список
                     _repos.postValue(it)
+                    //_error
                 }
         )
     }
