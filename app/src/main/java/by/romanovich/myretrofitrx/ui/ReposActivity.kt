@@ -5,16 +5,14 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import by.romanovich.myretrofitrx.app
-import by.romanovich.myretrofitrx.data.retrofit.GitHubApi
-
 import by.romanovich.myretrofitrx.databinding.ActivityReposBinding
 import by.romanovich.myretrofitrx.domain.ProjectsRepo
+import org.koin.android.ext.android.inject
 
 class ReposActivity : AppCompatActivity() {
     private lateinit var binding: ActivityReposBinding
     //MVVM
-    private val gitRepo : ProjectsRepo by lazy { app.gitProjectsRepo}
+    private val gitRepo : ProjectsRepo by inject() /*by lazy { app.gitProjectsRepo}*/
     //viewModel создаем с помощбю отдельного расширения ReposViewModel by viewModels и в нее передаем наш репозиторий который достаем из app
     private val viewModel: ReposViewModel by viewModels { ReposViewModelFactory(gitRepo) }
     private val adapter = GitProjectsAdapter()
