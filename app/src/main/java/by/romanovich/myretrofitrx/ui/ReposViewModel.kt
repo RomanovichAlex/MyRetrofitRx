@@ -8,7 +8,9 @@ import by.romanovich.myretrofitrx.domain.ProjectsRepo
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.subscribeBy
 
-class ReposViewModel(private val gitProjectRepo: ProjectsRepo) : ViewModel() {
+class ReposViewModel(
+    private val gitProjectRepo: ProjectsRepo
+    ) : ViewModel() {
     //что бы закидывать объекты
     private val _repos = MutableLiveData<List<GitProjectEntity>>()
     //что бы читать объекты
@@ -26,12 +28,17 @@ class ReposViewModel(private val gitProjectRepo: ProjectsRepo) : ViewModel() {
             gitProjectRepo
                 .observeReposForUser(username)
                     //подписываемся
-                .subscribeBy {
+                .subscribeBy (
+                    onSuccess =
+                        {
                     _inProgress.postValue(false)
                     //берем лайв дату и передаем список
                     _repos.postValue(it)
                     //_error
-                }
+                },
+                onError={
+
+                        })
         )
     }
 

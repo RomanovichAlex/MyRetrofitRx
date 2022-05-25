@@ -4,21 +4,28 @@ import by.romanovich.myretrofitrx.data.retrofit.GitHubApi
 import by.romanovich.myretrofitrx.domain.GitProjectEntity
 import by.romanovich.myretrofitrx.domain.ProjectsRepo
 import io.reactivex.rxjava3.core.Single
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitProjectsRepoImpl : ProjectsRepo {
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.github.com/")
+//теперь репозиторий только может общаться с апи, превращает интерфейс репозитория в интерфейс гитХаб апишки
+class RetrofitProjectsRepoImpl(
+    private val api:GitHubApi
+    //private val retrofit: Retrofit,
+   // private val baseUrl:String,
+    //private val gsonConverter: Converter.Factory
+) : ProjectsRepo {
+
+    /*private val retrofit = Retrofit.Builder()
+        .baseUrl(baseUrl)
             //упрощаем
         .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-    private val api: GitHubApi = retrofit.create(GitHubApi::class.java)
+        //.addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(gsonConverter)
+        .build()*/
+    //для создания api нужен ретрофит
+    //private val api: GitHubApi = retrofit.create(GitHubApi::class.java)
 
     override fun observeReposForUser(username: String): Single<List<GitProjectEntity>> {
     //упрощаем
