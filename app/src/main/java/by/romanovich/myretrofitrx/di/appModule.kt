@@ -3,6 +3,8 @@ package by.romanovich.myretrofitrx.di
 import by.romanovich.myretrofitrx.data.RetrofitProjectsRepoImpl
 import by.romanovich.myretrofitrx.data.retrofit.GitHubApi
 import by.romanovich.myretrofitrx.domain.ProjectsRepo
+import by.romanovich.myretrofitrx.ui.ReposViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Converter
@@ -32,7 +34,10 @@ val appModule = module {
     factory<Converter.Factory> { GsonConverterFactory.create()}
     /*// Single presenter factory
     factory { MyViewModel(get()) }*/
+
+    viewModel { ReposViewModel(get()) }
 }
+
 
 /*private val apiUrl = "https://api.github.com/"
 private val gsonConverter by lazy{ GsonConverterFactory.create()}
