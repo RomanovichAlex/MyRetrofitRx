@@ -7,7 +7,7 @@ import by.romanovich.myretrofitrx.domain.GitProjectEntity
 import by.romanovich.myretrofitrx.domain.ProjectsRepo
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.subscribeBy
-
+//ui - пользовательские интерфейсы связанные с этим подклассом, ui знает о domain, не знает о data.(Знает о бизнесс логике но не знает о реализации)
 class ReposViewModel(
     private val gitProjectRepo: ProjectsRepo
     ) : ViewModel() {

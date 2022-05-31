@@ -3,6 +3,7 @@ package by.romanovich.myretrofitrx.ui
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import by.romanovich.myretrofitrx.domain.GitProjectEntity
+//ui - пользовательские интерфейсы связанные с этим подклассом, ui знает о domain, не знает о data.(Знает о бизнесс логике но не знает о реализации)
 
 class GitProjectsAdapter : RecyclerView.Adapter<GitProjectVh>() {
     private var data: List<GitProjectEntity> = emptyList()

@@ -8,6 +8,7 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+//DATA - это реализация, которая зависит от сторонних библиотек(retrofit, роом...)
 
 //теперь репозиторий только может общаться с апи, превращает интерфейс репозитория в интерфейс гитХаб апишки
 class RetrofitProjectsRepoImpl(

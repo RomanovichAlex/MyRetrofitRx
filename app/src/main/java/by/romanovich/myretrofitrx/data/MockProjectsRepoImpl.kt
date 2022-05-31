@@ -4,6 +4,8 @@ import by.romanovich.myretrofitrx.domain.GitProjectEntity
 import by.romanovich.myretrofitrx.domain.ProjectsRepo
 import io.reactivex.rxjava3.core.Single
 
+//DATA - это реализация, которая зависит от сторонних библиотек(retrofit, роом...)
+
 class MockProjectsRepoImpl : ProjectsRepo {
 
     override fun observeReposForUser(username: String): Single<List<GitProjectEntity>> {

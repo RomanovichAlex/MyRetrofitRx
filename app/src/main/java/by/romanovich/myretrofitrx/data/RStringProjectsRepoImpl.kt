@@ -6,6 +6,8 @@ import by.romanovich.myretrofitrx.domain.GitProjectEntity
 import by.romanovich.myretrofitrx.domain.ProjectsRepo
 import io.reactivex.rxjava3.core.Single
 
+//DATA - это реализация, которая зависит от сторонних библиотек(retrofit, роом...)
+
 //для это реализации репозитория контекст это внешняя зависимость
 class RStringProjectsRepoImpl(
     private val context: Context

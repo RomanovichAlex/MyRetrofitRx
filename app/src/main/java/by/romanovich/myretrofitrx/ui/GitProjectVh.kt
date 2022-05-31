@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import by.romanovich.myretrofitrx.databinding.ItemGitProjectBinding
 import by.romanovich.myretrofitrx.domain.GitProjectEntity
-
+//ui - пользовательские интерфейсы связанные с этим подклассом, ui знает о domain, не знает о data.(Знает о бизнесс логике но не знает о реализации)
 class GitProjectVh(private val binding: ItemGitProjectBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
